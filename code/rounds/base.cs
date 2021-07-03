@@ -28,9 +28,8 @@ public abstract partial class BaseRound : NetworkComponent
 	public void Start()
 	{
 		if (Host.IsServer && RoundDuration > 0)
-		{
 			RoundEndTime = Sandbox.Time.Now + RoundDuration;
-		}
+
 		OnStart();
 	}
 
@@ -47,10 +46,9 @@ public abstract partial class BaseRound : NetworkComponent
 	public void AddPlayer(Player player)
 	{
 		Host.AssertServer();
+		
 		if (!Players.Contains(player))
-		{
 			Players.Add(player);
-		}
 	}
 
 	public virtual void OnPlayerSpawn(Player player) {}

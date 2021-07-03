@@ -65,6 +65,7 @@ public partial class Game : Sandbox.Game
 	public void ChangeRound(BaseRound round)
 	{
 		Assert.NotNull(round);
+		
 		Round?.Finish();
 		Round = round;
 		Round?.Start();
@@ -84,18 +85,15 @@ public partial class Game : Sandbox.Game
 	public override void OnKilled(Entity ent)
 	{
 		if (ent is Player player)
-		{
 			Round?.OnPlayerKilled(player);
-		}
+
 		base.OnKilled(ent);
 	}
 
 	private void CheckMinimumPlayers()
 	{
 		if (Client.All.Count >= 2)
-		{
 			if (Round == null)
 				ChangeRound(new Preparing());
-		}
 	}
 }

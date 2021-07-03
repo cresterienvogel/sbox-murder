@@ -164,6 +164,7 @@ public class Playing : BaseRound
 
 			player.Respawn();
 		}
+		
 		base.OnFinish();
 	}
 

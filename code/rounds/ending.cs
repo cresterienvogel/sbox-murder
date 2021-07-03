@@ -19,7 +19,7 @@ public partial class Ending : BaseRound
 	public override void OnPlayerLeave(Player player)
 	{
 		base.OnPlayerLeave(player);
-
+		
 		if (Players.Contains(player))
 			Players.Remove(player);
 	}

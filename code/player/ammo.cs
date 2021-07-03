@@ -16,6 +16,7 @@ partial class Player
 	public int AmmoCount(AmmoType type)
 	{
 		var iType = (int)type;
+
 		if (Ammo == null) 
 			return 0;
 
@@ -28,6 +29,7 @@ partial class Player
 	public bool SetAmmo(AmmoType type, int amount)
 	{
 		var iType = (int)type;
+		
 		if (!Host.IsServer) 
 			return false;
 
