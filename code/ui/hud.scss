@@ -1,0 +1,52 @@
+vitals {
+	position: absolute;
+	bottom: 80px;
+	left: 40px;
+	font-size: 70px;
+	color: #fff;
+	font-family: Roboto;
+
+	label {
+		color: rgb(214, 61, 112);
+		text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.877);
+
+		&.timer
+		{
+			color: #fff;
+		}
+
+		&.round
+		{
+			font-size: 55px;
+			top: 15px;
+			left: 15px;
+		}
+
+		&.role
+		{
+			position: absolute;
+			top: 80px;
+			color: rgb(156, 255, 64);
+			font-size: 48px;
+		}
+
+		&.winner
+		{
+			position: absolute;
+			bottom: 80px;
+			color: rgb(179, 64, 255);
+			font-size: 48px;
+		}
+	}
+}
+
+text.helper
+{
+	position: absolute;
+	bottom: 40px;
+	left: 40px;
+	font-size: 48px;
+	color: #fff;
+	font-family: Roboto;
+	text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.877);
+}
