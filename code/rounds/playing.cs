@@ -19,23 +19,16 @@ public class Playing : BaseRound
 		player.MakeSpectator();
 		player.IsDead = true;
 
-		player.GetClientOwner().SetScore("deaths", player.GetClientOwner().GetScore<int>("deaths", 0) + 1);
-
 		var LastAttacker = player.LastAttacker;
 
 		if (LastAttacker != null)
 		{
-			if (LastAttacker.Tags.Has("murderer"))
-				LastAttacker.GetClientOwner().SetScore("kills", LastAttacker.GetClientOwner().GetScore<int>("kills", 0) + 1);
-
 			if (LastAttacker.Tags.Has("detective") && !player.Tags.Has("murderer"))
 			{
 				if (LastAttacker.Tags.Has("penalty"))
 					LastAttacker.Inventory.DeleteContents();
 				else
 					LastAttacker.Tags.Add("penalty");
-
-				LastAttacker.GetClientOwner().SetScore("kills", LastAttacker.GetClientOwner().GetScore<int>("kills", 0) - 1);
 			}
 		}
 
@@ -53,9 +46,6 @@ public class Playing : BaseRound
 		{
 			using (Prediction.Off())
 				Game.Instance.ShowWinner(To.Everyone, "Bystanders won !");
-
-			if (LastAttacker != null && LastAttacker.Tags.Has("detective"))
-				LastAttacker.GetClientOwner().SetScore("kills", LastAttacker.GetClientOwner().GetScore<int>("kills", 0) + 1);
 
 			Game.Instance.ChangeRound(new Ending() {
 				Players = Players
@@ -134,7 +124,7 @@ public class Playing : BaseRound
 						continue;
 
 					if (model.Contains("hair") || model.Contains("jacket")) 
-						clothing.RenderColor = Color.Random.ToColor32();
+						clothing.RenderColor = Color.Random;
 				}
 			}
 

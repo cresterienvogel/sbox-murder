@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract partial class BaseRound : NetworkComponent
+public abstract partial class BaseRound : BaseNetworkable
 {
 	public virtual int RoundDuration { get; set; } = 0;
 

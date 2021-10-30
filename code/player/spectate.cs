@@ -23,9 +23,9 @@ public class SpectateCamera : Sandbox.Camera
 		TargetPos = CurrentView.Position;
 		TargetRot = CurrentView.Rotation;
 
-		Pos = TargetPos;
-		Rot = TargetRot;
-		LookAngles = Rot.Angles();
+		Position = TargetPos;
+		Rotation = TargetRot;
+		LookAngles = Rotation.Angles();
 		FovOverride = 80;
 
 		DoFPoint = 0.0f;
@@ -43,13 +43,13 @@ public class SpectateCamera : Sandbox.Camera
 		if (player == null) 
 			return;
 
-		var tr = Trace.Ray(Pos, Pos + Rot.Forward * 4096).UseHitboxes().Run();
+		var tr = Trace.Ray(Position, Position + Rotation.Forward * 4096).UseHitboxes().Run();
 
 		FieldOfView = FovOverride;
 
 		Viewer = null;
 		{
-			var lerpTarget = tr.EndPos.Distance(Pos);
+			var lerpTarget = tr.EndPos.Distance(Position);
 			DoFPoint = lerpTarget;
 		}
 
@@ -75,12 +75,12 @@ public class SpectateCamera : Sandbox.Camera
 
 	void FreeMove()
 	{
-		var mv = MoveInput.Normal * 300 * RealTime.Delta * Rot * MoveSpeed;
+		var mv = MoveInput.Normal * 300 * RealTime.Delta * Rotation * MoveSpeed;
 
 		TargetRot = Rotation.From(LookAngles);
 		TargetPos += mv;
 
-		Pos = Vector3.Lerp(Pos, TargetPos, 10 * RealTime.Delta * (1 - LerpMode));
-		Rot = Rotation.Slerp(Rot, TargetRot, 10 * RealTime.Delta * (1 - LerpMode));
+		Position = Vector3.Lerp(Position, TargetPos, 10 * RealTime.Delta * (1 - LerpMode));
+		Rotation = Rotation.Slerp(Rotation, TargetRot, 10 * RealTime.Delta * (1 - LerpMode));
 	}
 }

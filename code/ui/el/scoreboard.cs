@@ -18,9 +18,4 @@ public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 public class ScoreboardEntry : Sandbox.UI.ScoreboardEntry
 {
 	public ScoreboardEntry() {}
-
-	public override void UpdateFrom(PlayerScore.Entry entry)
-	{
-		base.UpdateFrom(entry);
-	}
 }
